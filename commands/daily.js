@@ -18,7 +18,13 @@ module.exports = {
             if (err) throw err;
             try {
                 if (now.getTime() >= result[0].daily || result[0].daily === 0) {
-                    message.reply('du fik dine daglige 5000 coins')
+                    let embed = new Discord.MessageEmbed()
+                        .setTitle('Askov GD Daily Coins')
+                        .setColor('#2F3136')
+                        .setDescription(`Du modtog dine 5000 daglige coins`)
+                        .setFooter(message.author.username, message.author.displayAvatarURL());
+
+                    message.reply(embed)
                     con.query(`UPDATE data SET daily = ? WHERE id = ?`, [tmrw.getTime(), message.author.id], function (err, result) { if (err) throw err; });
                     con.query(`UPDATE data SET money = money + ? WHERE id = ?`, [5000, message.author.id], function (err, result) { if (err) throw err; });
                 } else {
