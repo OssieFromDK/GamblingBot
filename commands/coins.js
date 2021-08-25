@@ -13,7 +13,7 @@ module.exports = {
             if (err) throw err;
             try {
                 let embed = new Discord.MessageEmbed()
-                        .setTitle('Askov GD Coins')
+                        .setTitle('Askov Game Design Coins')
                         .setColor('#2F3136')
                         .setDescription(`Du har **${result[0].money}** coins!`)
                         .setFooter(message.author.username, message.author.displayAvatarURL());
